@@ -10,11 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('create','MainController@create');
-Route::get('show','MainController@show');
+Route::get('/','MainController@show');
+Route::get('all/create','MainController@create');
 Route::get('main','MainController@main');
+Route::post('student/store','StudetnController@store');
+Route::get('student/create','StudetnController@create');
 
-Route::get('/', function () {
-
-    return view('welcome');
-});
