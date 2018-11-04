@@ -1,0 +1,14 @@
+.navbar-design .navbar-inverse{
+	border-radius:0px;
+	background-color: #050f22d4;
+	background-image:none;
+}
+.navbar-design .navbar{
+	border:1px solid #050f22d4;
+}
+.sidebar li a{
+	color: white;
+}
+.sidebar li a:hover{
+	color: black;
+}

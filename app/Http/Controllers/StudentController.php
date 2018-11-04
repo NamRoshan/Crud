@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Student;
 
 class StudentController extends Controller
 {
@@ -13,8 +14,9 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $Student =Student::all();
-        return view('all.create',['student'=>$student]);
+        //
+        // $students =Student::all();
+        // return view('all.show',['students'=>$students]);
     }
 
     /**
@@ -35,14 +37,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        //
         $student=new Student;
         $student->st_name=$request->st_name;
         $student->st_address=$request->st_address;
         $student->st_roll=$request->st_roll;
         $student->st_date=$request->st_date;
         $student->save();
-        return redirect()->route('dashboard.master');
-
+        return redirect()->route('student.show');
     }
 
     /**
@@ -65,6 +67,8 @@ class StudentController extends Controller
     public function edit($id)
     {
         //
+        $student = Student::find($id);
+        return view('all.edit', ['student' => $student]);
     }
 
     /**
@@ -77,6 +81,13 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $student = Student::find($id);
+        $student->st_name = $request->st_name;
+        $student->st_address = $request->st_address;
+        $student->st_roll= $request->st_roll;
+        $student->st_date= $request->st_date;
+        $student->save();
+        return redirect()->route('student.show');
     }
 
     /**
@@ -88,5 +99,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('student.show');
     }
 }

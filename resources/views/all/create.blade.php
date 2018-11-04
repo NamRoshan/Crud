@@ -1,12 +1,8 @@
 @extends('dashboard.master')
 @section('create')
-          <form accept-charset="UTF-8" action="/" class="require-validation col-md-4" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post"  action="{{route('student/store')}}">
-          <div style="margin:0;padding:0;display:inline">
-          <input name="utf8" type="hidden" value="✓" />
-          <input name="_method" type="hidden" value="PUT" />
-          <input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" />
-         </div>
-            <br>
+          <form action="{{ url('StudentController') }}" method="POST" class="col-md-6">
+
+
           <div class='form-row'>
               <div class='form-group required'>
                 <div class='error form-group hide'>
@@ -43,7 +39,7 @@
             <div class='form-row'>
               <div class='form-group'>
                          <label class='control-label'></label>
-                      
+                                  {{csrf_field()}}
                <button class='form-control btn btn-primary' type='submit'> Save →</button>
           
               </form>    

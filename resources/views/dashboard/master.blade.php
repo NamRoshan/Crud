@@ -2,12 +2,14 @@
 <html>
 <head>
 	<title></title>
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
    <!-- header -->
-  <nav class="navbar navbar-inverse ">
+   <div class="navbar-design">
+      <nav class="navbar navbar-inverse ">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -31,13 +33,14 @@
         </div>
       </div>
     </nav>
+   </div>
 <!-- slidebar -->
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="{{url('/')}}">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="{{url('all/create')}}">Insert</a></li>
+            <li><a href="{{url('StudentController/create')}}">Insert</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
@@ -60,6 +63,8 @@
                @yield('create')
                <!-- view data -->
                 @yield('view')
+               <!--  edit data -->
+                @yield('edit')
 
           <div class="table-responsive">
   

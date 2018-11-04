@@ -10,9 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','MainController@show');
-Route::get('all/create','MainController@create');
-Route::get('main','MainController@main');
-Route::post('student/store','StudetnController@store');
-Route::get('student/create','StudetnController@create');
+// Route::resource('MainController','MainController');
+Route::get('all.edit.{id}','StudentController@edit')->name('all.edit');
+Route::put('all.update.{id}', 'StudentController@update')->name('students.update');
+Route::delete('students.delete.{id}', 'StudentController@destroy')->name('students.destroy');
+Route::get('/','MainController@show')->name('student.show');
+Route::resource('StudentController','StudentController');//automatic go to create method call
+
 
