@@ -5,8 +5,18 @@
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+  <!-- toast -->
+     <link href="{{ asset('css/toastr.min.css') }}" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet">
+
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+  <!-- toat js -->
+  <script type="text/javascript" src="{{ asset('js/toastr.min.js') }}"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+  <!-- custom jss -->
+  <script type="text/javascript" src="{{asset('js/custom.js')}}"></script>
    <!-- header -->
    <div class="navbar-design">
       <nav class="navbar navbar-inverse ">
@@ -74,7 +84,28 @@
 
 </head>
 <body>
+<!-- for tost message script -->
+<script>
+  @if(Session::has('message'))
+    var type="{{Session::get('alert-type','info')}}"
 
+  
+    switch(type){
+      case 'info':
+             toastr.info("{{ Session::get('message') }}");
+             break;
+          case 'success':
+              toastr.success("{{ Session::get('message') }}");
+              break;
+          case 'warning':
+              toastr.warning("{{ Session::get('message') }}");
+              break;
+          case 'error':
+            toastr.error("{{ Session::get('message') }}");
+            break;
+    }
+  @endif
+</script>
  
 
 </body>

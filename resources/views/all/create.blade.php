@@ -1,8 +1,15 @@
 @extends('dashboard.master')
 @section('create')
           <form action="{{ url('StudentController') }}" method="POST" class="col-md-6">
-
-
+              @if ($errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
           <div class='form-row'>
               <div class='form-group required'>
                 <div class='error form-group hide'>
@@ -43,4 +50,5 @@
                <button class='form-control btn btn-primary' type='submit'> Save →</button>
           
               </form>    
+
 @endsection
