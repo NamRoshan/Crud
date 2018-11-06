@@ -1,9 +1,5 @@
 @extends('dashboard.master')
 @section('view')
-        <form action="{{ url('del')}}" method="post">
-                                          {!!csrf_field()!!}
-               <button class='form-control btn btn-primary' type='submit'>Select delete →</button>
-      </form>
  <div class="col-md-12">
           <form action="{{ url('del') }}" method="post">
        
@@ -46,7 +42,13 @@
                     <td>
                       <a href="{{route('all.edit', $student->id)}}" class="btn btn-primary">Edit</a>
 
-                
+                <!--       <form action="{{ route('students.destroy', $student->id) }}" method="POST">
+                        {{csrf_field()}}
+                   
+                        {{ method_field('DELETE') }}
+
+                        <input type="submit" name="submit" value="Delete" class="btn btn-danger">
+                      </form> -->
                     </td>
                   </tr>
                   @endforeach

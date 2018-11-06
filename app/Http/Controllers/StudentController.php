@@ -131,7 +131,7 @@ class StudentController extends Controller
 
          //
         $delid=$request->input('delid');
-        Student::wherer('id',$delid)->delete();
+        Student::whereIn('id',$delid)->delete();
         $notification = array(
                 'message' => 'Select Delete Successfully a Record',
                 'alert-type' => 'success'
