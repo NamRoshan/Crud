@@ -1,5 +1,6 @@
 @extends('dashboard.master')
 @section('create')
+
           <form action="{{ url('StudentController') }}" method="POST" class="col-md-6">
               @if ($errors->any())
                   <div class="alert alert-danger">

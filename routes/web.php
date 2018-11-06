@@ -14,7 +14,15 @@
 Route::get('all.edit.{id}','StudentController@edit')->name('all.edit');
 Route::put('all.update.{id}', 'StudentController@update')->name('students.update');
 Route::delete('students.delete.{id}', 'StudentController@destroy')->name('students.destroy');
+// multiple record delete
+Route::post('del', 'StudentController@del')->name('/del');
+
 Route::get('/','MainController@show')->name('student.show');
-Route::resource('StudentController','StudentController');//automatic go to create method call
+Route::post('StudentController','StudentController@store');
 
 
+Route::get('all.create','StudentController@create');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

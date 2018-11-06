@@ -33,9 +33,33 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+        
+             @guest
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
+            @else
+            <!-- session login -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                  {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
+
+              <ul class="dropdown-menu">
+                  <li>
+                      <a href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();">
+                          Logout
+                      </a>
+
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                      </form>
+                  </li>
+              </ul>
+          </li>
+          @endguest
+
           </ul>
           <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
@@ -45,12 +69,15 @@
     </nav>
    </div>
 <!-- slidebar -->
+@guest
+@else
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="{{url('/')}}">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="{{url('StudentController/create')}}">Insert</a></li>
+
+            <li><a href="{{url('all.create')}}">Insert</a></li>
             <li><a href="#">Analytics</a></li>
             <li><a href="#">Export</a></li>
           </ul>
@@ -76,12 +103,19 @@
                <!--  edit data -->
                 @yield('edit')
 
+        
+
           <div class="table-responsive">
   
         </div>
       </div>
     </div>
-
+  </div>
+@endguest
+@guest
+        <!-- login form -->
+                @yield('content')
+@endguest
 </head>
 <body>
 <!-- for tost message script -->

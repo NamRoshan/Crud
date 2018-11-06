@@ -12,6 +12,11 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         //
@@ -118,6 +123,17 @@ class StudentController extends Controller
         $student->delete();
         $notification = array(
                 'message' => ' Delete Successfully a Record',
+                'alert-type' => 'success'
+            );
+        return redirect()->route('student.show')->with($notification);
+    }
+    public function del(Request $request){
+
+         //
+        $delid=$request->input('delid');
+        Student::wherer('id',$delid)->delete();
+        $notification = array(
+                'message' => 'Select Delete Successfully a Record',
                 'alert-type' => 'success'
             );
         return redirect()->route('student.show')->with($notification);
